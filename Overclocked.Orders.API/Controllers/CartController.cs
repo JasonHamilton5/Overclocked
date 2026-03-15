@@ -46,7 +46,8 @@ namespace Overclocked.Orders.API.Controllers
                 for (int i = 0; i < cart.Items.Count; i++)
                 {
                     var item = cart.Items[i];
-                    var productResponse = await httpClient.GetAsync($"http://localhost:5001/api/products/GetProducts/{item.ProductId}");
+                    var productsHost = Environment.GetEnvironmentVariable("PRODUCTS_API_URL") ?? "http://localhost:5001";
+                    var productResponse = await httpClient.GetAsync($"{productsHost}/api/products/GetProducts/{item.ProductId}");
 
                     string productName = "Unknown";
                     string productSku = "N/A";

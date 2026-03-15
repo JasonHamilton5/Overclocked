@@ -82,7 +82,9 @@ using (var scope = app.Services.CreateScope())
     PopulateProducts.Seed(db);
 }
 
-if (app.Environment.IsDevelopment())
+var isDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
+
+if (app.Environment.IsDevelopment() && !isDocker)
 {
     var frontendPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "../Overclocked.Frontend"));
     var startInfo = new System.Diagnostics.ProcessStartInfo
