@@ -1,0 +1,6 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { background-color: #212529; color: white; width: 100%; min-height: 100vh; }
+
+#root { width: 100%; min-height: 100vh; display: flex; flex-direction: column; }
+::placeholder { color: #6c757d !important; opacity: 1; }
